@@ -11,6 +11,6 @@ The four major steps to develop a CFD simulation case for any fluid mechanics co
 
 3. **[CFD Simulation Case Setup](https://github.com/teymourj/2D-flow-over-flat-plate-laminar/blob/master/Docs/Fluent/Simulation.md)**
 
-4. **[CFD Results Post-Process](https://github.com/teymourj/2D-flow-over-flat-plate/blob/master/Docs/Fluent/Post_Process.md)**
+4. **[CFD Results Post-Process](https://github.com/teymourj/2D-flow-over-flat-plate-laminar/blob/master/Docs/Fluent/Post_Process.md)**
 
 This wiki includes the explanation of the above-mentioned steps for the problem of Laminar Flow over a flat plate.
