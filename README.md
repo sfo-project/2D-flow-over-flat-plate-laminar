@@ -1,1 +1,1 @@
-# flow-over-flat-plate-laminar
+# 2D-flow-over-flat-plate-laminar
