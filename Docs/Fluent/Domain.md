@@ -34,4 +34,4 @@ Once the mesh is generated it's quality should be examined. This can be done usi
 
 <More explanations can be added here on the concept of mesh examination.>
 
-> The complete mesh file (.msh) can be downloaded here [Download Mesh Here!](link)
+> The complete mesh file (.msh) can be downloaded here [Download Mesh Here!](https://github.com/teymourj/2D-flow-over-flat-plate-laminar/blob/master/laminar_flatplate_flow.msh)
