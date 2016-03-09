@@ -10,7 +10,7 @@ Figure 1 visualizes the physics of a uniform and steady flow passing over a soli
 </br>
 Fig.1 - Schematic of uniform and steady flow passing over a flat plate and forming the boundary layer region.
 
-The thickness of this layer increases further downstream the plate. The maximum thickness ** &delta; ** is defined as a vertical distance above which the velocity will recover to above 90% the free stream velocity. One of the classical definitions of the maximum boundary layer thickness is as follows:
+The thickness of this layer increases further downstream the plate. The maximum thickness **&delta;** is defined as a vertical distance above which the velocity will recover to above 90% the free stream velocity. One of the classical definitions of the maximum boundary layer thickness is as follows:
 
 <img src="./Images/lex-smits-9.0.png" width="200">
 
