@@ -1,7 +1,7 @@
 # Fluent
 A general methodological/scientific approach to develop and process a CFD simulation in ANSYS FLUENT for 2D laminar flow over a flat plate is explained and discussed here.
 
-<img src="./Images/.png" width="500">
+<img src="./Images/cover_photo.png" width="500">
 
 The four major steps to develop a CFD simulation case for any fluid mechanics consists the following four steps:
 
