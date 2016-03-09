@@ -1,6 +1,6 @@
 # CFD Simulation Case Setup
 
-**The created CFD domain is now read into the CFD package of interest to setup the CFD simulation. It should be noted that the current tutorial has a significant difference compared to other available CFD tutorials online! This tutorial is structured and developed based on a generic and methodological approach to set up a CFD simulation. The first principals and reasonings for each setting is discussed at each step. Potential alterations and modifications to perform similar analysis are also addressed and discussed. Hence, in the end user will have the capability of applying potential modifications, improvements or extending the application of the current CFD simulation to a more complex problem of interest, rather than having a one time successful run of a specific simulation with specific and strictly pre-defined boundary conditions.**
+**The created CFD domain is now read into the CFD package of interest to setup the CFD simulation. It should be noted that the current tutorial has a significant difference compared to other available CFD tutorials online! This tutorial is structured and developed based on a generic and methodological approach to set up a CFD simulation. The first principals and reasonings for each setting is discussed at each step. Potential alterations and modifications to perform similar analysis for different flow conditions are also addressed and discussed. Hence, in the end user will have the capability of applying potential modifications, improvements or extending the application of the current CFD simulation to a more complex problem of interest, rather than having a one time successful run of a specific simulation with specific and strictly pre-defined boundary conditions.**
 
 > **_In simple words: Current tutorial teaches users to fish, rather than giving them a fish._**
 
@@ -18,7 +18,7 @@ Solving the governing equations of the flow (i.e. system of partial differential
 4. ###### Setup Solution Methods:    
 In CFD simulations the governing equations of the flow are solve numerically. Based on the physics of the problem appropriate numerical schemes and solution methods are selected at this step.
 
-In the following section the details for the above four steps for the CFD simulation setup for **Laminar Flow in Circular Pipe** are explained in great details. It should be noted that the path for defining conditions and other settings are provided in `command line` format. Users can access exact same settings and options by following the provided path via the tree of progress or pull down menu in ANSYS FLUENT. The summary of the steps to take for CFD simulation setup for problem of 2D laminar flow over a flat plate are as follows:
+In the following section the details for the above four steps for the CFD simulation setup for **2D Laminar Flow Over a Flat plate** are explained in great details. It should be noted that the path for defining conditions and other settings are provided in `command line` format. Users can access exact same settings and options by following the provided path via the tree of progress or pull down menu in ANSYS FLUENT. The summary of the steps to take for CFD simulation setup for problem of 2D laminar flow over a flat plate are as follows:
 
  1-  `/define/models/steady`   
  2-  `/define/models/solver/pressure-based`    
@@ -29,8 +29,8 @@ In the following section the details for the above four steps for the CFD simula
  7-  `/define/boundary-conditions/pressure-outlet`   
  8-  `/define/boundary-conditions/pressure-outlet`   
  9-  `/define/boundary-conditions/wall`    
- 10-  `solve/set/discretization-schem`    
- 1- `solve/set/under-relaxation`   
+ 10- `solve/set/discretization-schem`    
+ 11- `solve/set/under-relaxation`   
  12- `/solve/initialize/compute-defaults/velocity-inlet`    
  13- `solve/iterate`
 
