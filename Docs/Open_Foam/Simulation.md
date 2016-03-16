@@ -79,16 +79,19 @@ Set the field variables at this boundary edit "U" and "p" files in `\0` to a fix
 
 If the shear forces and formed boundary layer becomes turbulent in this region user should modify this boundary conditions and provide required mesh resolution to capture the phenomena or set this boundary to free slip condition such that fluid elements would not interact with wall region. For low reynolds number flow, similar to the current problem of interest, a reasonable mesh resolution is sufficient to capture the laminar boundary layer region.
 
-To implement that the problem is two dimensional the boundary type and flow field variables are set to "empty" for the frontToBack boundary within the domain.
+Since this problem is two dimensional the boundary type and flow field variables for the `frontToBack` boundary, which defines the third dimension of the flow field are set to `empty`.
+
+For more detail on definitions and settings for defining CFD domain boundary conditions in OpenFoam readers are referred to [here](http://cfd.direct/openfoam/user-guide/boundaries/).
 
 **4. Setup Solution methods:**   
-In this step, it is highly recommended to use the default options and settings, unless based on physics of the problem the user is aware of any specific choices. Upon non-smooth convergence and potential divergence of the CFD simulation user can modify and examine various solution methods. To modify the solution methods and controls use the following commands respectively:
+In this step, it is highly recommended to use the default/suggested solution methods set in `fvSolution` file located in `\systems`, unless based on physics of the problem the user is aware of any specific choices. Upon non-smooth convergence and potential divergence of the CFD simulation user can modify and examine various solution methods.
 
-`solve/set/discretization-schem`
+The `fvSolution` file includes the solution methods for velocity and pressure fields and the required under relaxation factors for flow field variables.
 
-`solve/set/under-relaxation`
+Now all boundary conditions and settings for the CFD simulation are fully defined. User can **initialize** the solution through an educated guess to start the iteration process. In OpenFoam the initialization of the velocity and pressure fields is set on top of the `U` and `p` files located in the `0` folder:
 
-Now all boundary conditions and settings for the CFD simulation are defined. User can **initialize** the solution through an educated guess to start the iteration process: `/solve/initialize/compute-defaults/velocity-inlet`
-Solution initialization would incept the flow field variables, such as velocity and pressure, based on the defined values by user. For the current problem the CFD domain is recommended to be initialize by values of velocity and pressure at the pipe's inlet.
+```C++
+```
+The solution initialization would incept the flow field variables, such as velocity and pressure, based on the defined values by user. For the current problem the CFD domain is recommended to be initialize by values of velocity and pressure at the inlet.
 
-Iteration process for solving the flow field governing equation now shall start till converged solution is obtained:`solve/iterate`. A general rule of thumb for converged solution is to have continuity residuals of 10E-3. More details about commenting on validity of solution and convergence criteria will be discussed in next section.
+Iteration process for solving the flow field governing equation now shall start till converged solution is obtained. In OpenFoam the iteration can initiated by running a command line using the name of the application of choice. The name of the application and set marching time steps to solve the flow field governing equations  are set in `controlDict` dictionary file located in `\system folder`. For this problem a 10 seconds time interval is set with time steps of 0.005 seconds. The outputs will be written every 1 second till either the end of time interval or set tolerances for the residual of field variables are reached. The interations can be started by running the command `simpleFoam`.
