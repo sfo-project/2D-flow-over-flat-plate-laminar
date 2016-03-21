@@ -18,11 +18,11 @@ Solving the governing equations of the flow (i.e. system of partial differential
 4. ###### Setup Solution Methods:    
 In CFD simulations the governing equations of the flow are solve numerically. Based on the physics of the problem appropriate numerical schemes and solution methods are selected at this step.
 
-In the following section the details for the above four steps of the CFD simulation setup process for case study of **2D Laminar Flow Over a Flat plate** are explained in great details. As a general guideline, to setup a CFD simulation in OpenFoam it is recommended to start with files from one of the provided default tutorials in OpenFoam located in `OpenFoam/run/tutorials`. Users should find appropriate tutorial such that it's general physics is close to the problem of interest of users. This way, the majority of the required physical settings are pre-set and the others can be changed/modified accordingly. For example for the problem of **2D Laminar Flow Over a Flat plate** the tutorial of **2D over an airfoil** located at `OpenFoam/run/tutorials/incompressible/simpleFoam/airFoil2D` is used. Using the previously developed file, the above-mentioned four steps for CFD simulation development is done via editing the corresponding files, where the settings are defined and are located in the main working directory.
+In the following section the details for the above-mentioned four steps of the CFD simulation setup process for the case study of **2D Laminar Flow Over a Flat plate** are explained in great details. As a general guideline, to setup a CFD simulation in OpenFoam it is recommended to start with files from one of the provided default tutorials in OpenFoam located in `OpenFoam/run/tutorials`. Users should find appropriate tutorial such that the general physics of the chosen tutorial is close to the problem of interest of users. This way, the majority of the required physical settings are pre-set and the others can be changed/modified accordingly. For example for the problem of **2D Laminar Flow Over a Flat plate** the tutorial of **2D over an airfoil** located at `OpenFoam/run/tutorials/incompressible/simpleFoam/airFoil2D` is used. Using the previously developed file, the above-mentioned four steps for CFD simulation development is done via editing the corresponding files, where the settings are defined and are located in the main working directory.
 
 **1. Setup Model/s:**
 
-The main assumption in the classical problem of flow over a flat plate is that the free stream flow is uniform and steady. Therefore, the steady model is chosen to develop this CFD simulation. This along with other numerical schemes settings are set in a dictionary file called "fvSchemes" located at `\system` folder. To set the solver to be steady users define `steadyState` for the `ddtSchemes` and the rest of the settings will remain unchanged:
+The main assumption in the classical problem of a two dimensional flow over a flat plate is that the free stream flow is uniform and steady. Therefore, the steady model is chosen to develop this CFD simulation. This along with other numerical schemes settings are set in a dictionary file called "fvSchemes" located at `\system` folder. To set the solver to be steady users define `steadyState` for the `ddtSchemes` and the rest of the settings will remain unchanged:
 
 ```C++
 ```
@@ -33,7 +33,7 @@ In the current problem the focus is to investigate laminar flow and boundary lay
 ```C++
 ```
 
-It is important to note that the critical Reynolds number for flows over flat plate is about 1.24E+6. In cases that the Reynolds number, based on flat plate length, is greater than this critical value the model the appropriate turbulent model should be selected at this step. Various available turbulence models along with other options within `RASPropertise` dictionary file in OpenFoam can be found [here](http://cfd.direct/openfoam/user-guide/turbulence/).
+It is important to note that the critical Reynolds number for flows over flat plate is about 1.24E+6. In cases that the Reynolds number, based on flat plate length (as the lebngth scale), is greater than this critical value the model the appropriate turbulent model should be selected at this step. Various available turbulence models along with other options within `RASPropertise` dictionary file in OpenFoam can be found [here](http://cfd.direct/openfoam/user-guide/turbulence/).
 
 **2. Setup Working Fluid/s & Solid/s:**  
 
@@ -41,12 +41,12 @@ The choice of working fluid is problem dependent. In the absence of obligations 
 
 ```C++
 ```
-Considering that the flat plate length in 1 [m] and user will define a unit constant uniform velocity, the value of **\nu** will define inverse of the Reynolds number in this flow field. Therefore, changing this value would set the nominal Reynolds number of the flow based on the flat plate length. For other cases users should define the working fluid via this process. Various available transport models along with other options within `transportPropertise` dictionary file in OpenFoam can be found [here](http://cfd.direct/openfoam/user-guide/transport-rheology/#x40-2210007.3.1).
+Considering that the flat plate length in 1 [m] and user will define a unit constant uniform velocity (1 [m/s]), the value of **\nu** will be defined as the inverse of Reynolds number. Therefore, changing this value would set the nominal Reynolds number of the flow based on the flat plate length. For other cases users should define the working fluid via this process. Various available transport models along with other options within `transportPropertise` dictionary file in OpenFoam can be found [here](http://cfd.direct/openfoam/user-guide/transport-rheology/#x40-2210007.3.1).
 
 **3. Setup Boundary and Zone Conditions:**   
-In OpenFoam the type of boundaries within the CFD domain are defined in the `boundary` file located at `\constant\polyMesh`. Whether the users use blockMesh or their mesher package of choice, the blockMesh or convert command will take care of generating the `boundary` file respectively. Furthermore values for the field variables, such as velocity **U** and pressure **p**, at these boundaries are set in `U` and `p` files located at `0` folder located in the working directory respectively. The `0` folder includes the values of the field variables at boundaries for the time `t=0`.
+In OpenFoam the type of boundaries within the CFD domain are defined in the `boundary` file located at `\constant\polyMesh`. Whether the users use blockMesh or the convert command to create the CFD domain and discretize the `boundary` file will be created in this process. Furthermore values for the field variables, such as velocity **U** and pressure **p**, at these boundaries are set in `U` and `p` files located at `0` folder located in the working directory respectively. The `0` folder includes the values of the field variables at boundaries for the time `t=0`.
 
-As discussed earlier in the CFD domain's creation and discretization section, the CFD domain has four faces as boundaries. The boundary and zone conditions settings to develope CFD simulation for **2D Laminar Flow Over a Flat plate** case in OpenFoam are as follows:
+As discussed earlier in the CFD domain's creation and discretization section, the CFD domain has four faces as boundaries. The boundary and zone conditions settings to develop CFD simulation for **2D Laminar Flow Over a Flat plate** case in OpenFoam are as follows:
 
 **Inlet:** The flow enters from the inlet face of the CFD domain with constant velocity and uniform atmospheric pressure (i.e. zero gauge pressure). To set the type of this boundary edit `boundary` file in `\constant\polyMesh`. Set the type of face to `patch`, which is a condition that contains no geometric or
 topological information about the mesh:
@@ -66,7 +66,7 @@ Set the field variables at this boundary edit `U` and `p` files in `\0` to a con
 
 ```C++
 ```
-If in the problem of interest, there exist a specific pressure difference between the inlet and outlet or other surfaces, that magnitude can be defined in corresponding faces of the domain.
+If in a problem of interest, there exist a specific pressure difference between the inlet and outlet or other surfaces, that magnitude can be defined in corresponding faces of the domain.
 
 **Flat Plate:** The flow is bounded by the flat plate on the bottom of the CFD domain and interacts with it based on the no-slip boundary condition. To set the type of this boundary edit `boundary` field in `\constant\polyMesh` and set the type of face to `wall`:
 
@@ -94,4 +94,4 @@ Now all boundary conditions and settings for the CFD simulation are fully define
 ```
 The solution initialization would incept the flow field variables, such as velocity and pressure, based on the defined values by user. For the current problem the CFD domain is recommended to be initialize by values of velocity and pressure at the inlet.
 
-Iteration process for solving the flow field governing equation now shall start till converged solution is obtained. In OpenFoam the iteration can initiated by running a command line using the name of the application of choice. The name of the application and set marching time steps to solve the flow field governing equations  are set in `controlDict` dictionary file located in `\system folder`. For this problem a 10 seconds time interval is set with time steps of 0.005 seconds. The outputs will be written every 1 second till either the end of time interval or set tolerances for the residual of field variables are reached. The interations can be started by running the command `simpleFoam`.
+Iteration process for solving the flow field governing equation now shall start till converged solution is obtained. In OpenFoam the iteration can initiated by running a command line using the name of the application of choice. The name of the application and set marching time steps to solve the flow field governing equations  are set in `controlDict` dictionary file located in `\system folder`. For this problem a 10 seconds time interval is set with time steps of 0.005 seconds. The outputs will be written every 1 second till either the end of time interval or set tolerances for the residual of field variables are reached. The iterations can be started by running the command `simpleFoam`.
