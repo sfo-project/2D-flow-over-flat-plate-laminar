@@ -74,14 +74,14 @@ inlet
 Set the field variables at this boundary edit `U` and `p` files in `\0` folder to a constant uniform velocity in the streamwise direction (x-direction) with zero pressure gradient:.
 
 ```C++
-# In U file at 0 folder:
+// In U file at 0 folder:
 inlet
 {
     type            fixedValue;
     value           uniform (1 0 0);
 }
 
-# In p file at 0 folder:
+// In p file at 0 folder:
 inlet
 {
     type            zeroGradient;
@@ -97,6 +97,7 @@ outlet
     nFaces          100;
     startFace       19900;
 }
+
 free_surface
 {
     type            patch;
@@ -107,28 +108,26 @@ free_surface
 Set the field variables at this boundary edit `U` and `p` files in `\0` to a constant uniform atmospheric pressure with zero velocity gradient:
 
 ```C++
-# outlet
-# In U file at 0 folder:
+// In U file at 0 folder:
 outlet
 {
     type            zeroGradient;
 }
 
-# In p file at 0 folder:
+// In p file at 0 folder:
 outlet
 {
     type            fixedValue;
     value           uniform 0;
 }
 
-# free surface
-# In U file at 0 folder:
+// In U file at 0 folder:
 free_surface
 {
     type            zeroGradient;
 }
 
-# In p file at 0 folder:
+// In p file at 0 folder:
 free_surface
 {
     type            fixedValue;
@@ -151,14 +150,14 @@ flat_plate
 Set the field variables at this boundary edit "U" and "p" files in `\0` to a fixed value of zero velocity with zero pressure gradient, which represents the fundamental assumptions of the uniform laminar flow over a flat plate:
 
 ```C++
-# In U file at 0 folder:
+// In U file at 0 folder:
 flat_plate
 {
     type            fixedValue;
     value           uniform (0 0 0);
 }
 
-# In p file at 0 folder:
+// In p file at 0 folder:
 flat_plate
 {
     type            zeroGradient;
@@ -179,7 +178,7 @@ frontAndBackPlanes
     startFace       20200;
 }
 
-# In U and p files at 0 folder:
+// In U and p files at 0 folder:
 frontAndBack
 {
     type            empty;
@@ -196,10 +195,10 @@ The `fvSolution` file includes the solution methods for velocity and pressure fi
 Now all boundary conditions and settings for the CFD simulation are fully defined. User can **initialize** the solution through an educated guess to start the iteration process. In OpenFoam the initialization of the velocity and pressure fields is set on top of the `U` and `p` files located in the `0` folder:
 
 ```C++
-# In U file at 0 folder:
+// In U file at 0 folder:
 internalField   uniform (1 0 0);
 
-# In p file at 0 folder:
+// In p file at 0 folder:
 internalField   uniform 0;
 ```
 The solution initialization would incept the flow field variables, such as velocity and pressure, based on the defined values by user. For the current problem the CFD domain is recommended to be initialize by values of velocity and pressure at the inlet.
