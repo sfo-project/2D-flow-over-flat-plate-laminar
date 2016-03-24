@@ -1,5 +1,5 @@
 # 2D Laminar Flow Over Flat Plate
 <img src="cover_photo.png" width="500">
 - [STAR-CCM+ (coming soon!)](https://github.com/teymourj/2D-flow-over-flat-plate-laminar/tree/master/Docs/Star-CCM-Plus)
-- [FLUENT (completed)](https://github.com/teymourj/2D-flow-over-flat-plate-laminar/tree/master/Docs/Fluent)
-- [OpenFOAM (In Progress)](https://github.com/teymourj/2D-flow-over-flat-plate-laminar/tree/master/Docs/Open_Foam)
+- [FLUENT](https://github.com/teymourj/2D-flow-over-flat-plate-laminar/tree/master/Docs/Fluent)
+- [OpenFOAM](https://github.com/teymourj/2D-flow-over-flat-plate-laminar/tree/master/Docs/Open_Foam)
